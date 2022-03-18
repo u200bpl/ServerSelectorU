@@ -1,0 +1,26 @@
+###################
+# SERVER SELECTOR #
+#   BY: u200b     #
+###################
+
+menu:
+  name: "&8&l* &cServer Selector &8&l*"
+  slots: 36
+  items:
+    GRASS_BLOCK:
+      slot: 12
+      name: "&8* &aSurvival &8*"
+      lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25565%/%pinger_max_127.0.0.1:25565%\n&f\n&8* %pinger_online_127.0.0.1:25565% &8*"
+      command: server survival
+
+    STONE:
+      slot: 14
+      name: "&8* &bCreative &8*"
+      lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25566%/%pinger_max_127.0.0.1:25566%\n&f\n&8* %pinger_online_127.0.0.1:25566% &8*"
+      command: server creative
+
+    DIAMOND_BLOCK:
+      slot: 22
+      name: "&8* &cMinigames &8*"
+      lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25567%/%pinger_max_127.0.0.1:25567%\n&f\n&8* %pinger_online_127.0.0.1:25567% &8*"
+      command: server minigames

@@ -1,0 +1,12 @@
+name: ServerSelectorU
+version: '${project.version}'
+main: me.u200b.serverselectoru.ServerSelectorU
+api-version: 1.18
+authors: [ u200b ]
+description: Minecraft Server Selector
+softdepend: [PlaceholderAPI]
+
+commands:
+  serverselectoru:
+    aliases: [ssu]
+    description: Reload command

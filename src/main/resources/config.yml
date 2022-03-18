@@ -1,0 +1,12 @@
+###################
+# SERVER SELECTOR #
+#   BY: u200b     #
+###################
+
+join:
+  enable: true
+  clearinv: true
+  item: COMPASS
+  slot: 4
+  name: "&8&l* &cServer Selector &8&l*"
+  lore: "\n&f%player_name% Use this compass to select a server"
