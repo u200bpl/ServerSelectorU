@@ -9,6 +9,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 public class InventoryClick implements Listener {
     ServerSelectorU plugin;
     public InventoryClick(ServerSelectorU instance) {
@@ -20,6 +24,7 @@ public class InventoryClick implements Listener {
         Player player = (Player) event.getWhoClicked();
         ItemStack item = event.getCurrentItem();
         Inventory inv = event.getInventory();
+        String command = ".command";
 
         if (inv.getHolder() instanceof ServerSelectorInv) {
             if (item == null) {
@@ -30,7 +35,16 @@ public class InventoryClick implements Listener {
 
             for (String string : plugin.menuConfig.getConfigurationSection("menu.items").getKeys(false)) {
                 if (event.getSlot() == plugin.menuConfig.getInt("menu.items." + string + ".slot")) {
-                    player.performCommand(plugin.menuConfig.getString("menu.items." + string + ".command"));
+                    ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+                    DataOutputStream output = new DataOutputStream(byteOutput);
+                    try {
+                        output.writeUTF("Connect");
+                        output.writeUTF(plugin.menuConfig.getString("menu.items." + string + ".server"));
+                        player.sendPluginMessage(plugin, "BungeeCord", byteOutput.toByteArray());
+                        output.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

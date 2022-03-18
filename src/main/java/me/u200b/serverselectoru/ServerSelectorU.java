@@ -32,6 +32,7 @@ public final class ServerSelectorU extends JavaPlugin {
         getServer().getPluginManager().registerEvents( new Join(this), this);
         getServer().getPluginManager().registerEvents( new OpenMenu(this), this);
         getServer().getPluginManager().registerEvents( new InventoryClick(this), this);
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
         // COMMANDS
         getCommand("serverselectoru").setExecutor(new Reload(this));
