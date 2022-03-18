@@ -44,24 +44,18 @@ public final class ServerSelectorU extends JavaPlugin {
 
         // GET CUSTOM FILES
         if (!messageFile.exists()) {
-            saveResource("message.yml", false);
+            saveResource("message.yml", true);
         }
         if (!menuFile.exists()) {
-            saveResource("menu.yml", false);
+            saveResource("menu.yml", true);
         }
         if (!configFile.exists()) {
-            saveResource("config.yml", false);
+            saveResource("config.yml", true);
         }
-    }
-
-    public void reloadConfig() {
-        saveResource("message.yml", false);
-        saveResource("menu.yml", false);
-        saveResource("config.yml", false);
     }
 
     @Override
     public void onDisable() {
-        reloadConfig();
+
     }
 }

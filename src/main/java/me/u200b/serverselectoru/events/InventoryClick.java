@@ -29,7 +29,7 @@ public class InventoryClick implements Listener {
             event.setCancelled(true);
 
             for (String string : plugin.menuConfig.getConfigurationSection("menu.items").getKeys(false)) {
-                if (event.getSlot() == plugin.getConfig().getInt("menu.items." + string + ".slot")) {
+                if (event.getSlot() == plugin.menuConfig.getInt("menu.items." + string + ".slot")) {
                     player.performCommand(plugin.menuConfig.getString("menu.items." + string + ".command"));
                 }
             }

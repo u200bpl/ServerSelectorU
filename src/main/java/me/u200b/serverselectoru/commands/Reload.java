@@ -16,20 +16,20 @@ public class Reload implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player player = (Player) sender;
         if(sender instanceof Player){
-            sender.sendMessage("Only players can excute this command");
-        }
+            Player player = (Player) sender;
+            if (player.hasPermission("ss.reload")) {
+                if (args.length >= 1) {
+                    if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
 
-        if (player.hasPermission("ss.reload")) {
-            if (args.length >= 1) {
-                if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
-                    player.sendMessage(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.messageConfig.getString("reload"))));
-                    plugin.reloadConfig();
-               }
-            } else {
-               player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.messageConfig.getString("usage")));
+                        player.sendMessage(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.messageConfig.getString("reload"))));
+                    }
+                } else {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.messageConfig.getString("usage")));
+                }
             }
+        } else {
+            sender.sendMessage("Only players can excute this command");
         }
         return false;
     }
