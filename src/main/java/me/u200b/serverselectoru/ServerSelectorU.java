@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 
 public final class ServerSelectorU extends JavaPlugin {
     // MESSAGE.YML
@@ -42,18 +43,21 @@ public final class ServerSelectorU extends JavaPlugin {
         }
 
         // GET CUSTOM FILES
+        if (!messageFile.exists()) {
+            saveResource("message.yml", false);
+        }
         if (!menuFile.exists()) {
-            reloadConfig();
-
-            getLogger().warning("Didn't see any configuaration files");
-            getLogger().warning("Making configuaration files for you");
+            saveResource("menu.yml", false);
+        }
+        if (!configFile.exists()) {
+            saveResource("config.yml", false);
         }
     }
 
     public void reloadConfig() {
-        saveResource("menu.yml", true);
-        saveResource("message.yml", true);
-        saveResource("config.yml", true);
+        saveResource("message.yml", false);
+        saveResource("menu.yml", false);
+        saveResource("config.yml", false);
     }
 
     @Override
