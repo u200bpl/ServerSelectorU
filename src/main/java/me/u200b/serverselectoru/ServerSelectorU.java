@@ -1,16 +1,17 @@
 package me.u200b.serverselectoru;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.u200b.serverselectoru.commands.Reload;
 import me.u200b.serverselectoru.events.InventoryClick;
 import me.u200b.serverselectoru.events.Join;
 import me.u200b.serverselectoru.events.OpenMenu;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 
 public final class ServerSelectorU extends JavaPlugin {
     // MESSAGE.YML
@@ -48,9 +49,19 @@ public final class ServerSelectorU extends JavaPlugin {
         }
         if (!menuFile.exists()) {
             saveResource("menu.yml", true);
+
         }
         if (!configFile.exists()) {
             saveResource("config.yml", true);
+        }
+
+        try {
+            messageConfig.load(messageFile);
+            menuConfig.load(menuFile);
+            configConfig.load(configFile);
+            return;
+        } catch (Exception e) {
+            getLogger().warning("Saving files failed: " + e.getMessage());
         }
     }
 
