@@ -19,7 +19,7 @@ public class OpenMenu implements Listener {
     public void onPlayerClick(PlayerInteractEvent event) {
         Player player = (Player) event.getPlayer();
 
-        if (player.getItemInHand().getType() == Material.getMaterial(plugin.configConfig.getString("join.item"))) {
+        if (player.getItemInHand().getType() == Material.getMaterial(plugin.configConfig.getString("item"))) {
             new ServerSelectorInv(plugin, player);
         }
     }

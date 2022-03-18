@@ -58,6 +58,6 @@ public final class ServerSelectorU extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        reloadConfig();
     }
 }

@@ -26,26 +26,26 @@ public class Join implements Listener {
         Player player = event.getPlayer();
         PlayerInventory inv = player.getInventory();
 
-        if (plugin.configConfig.getBoolean("join.clearinv")) {
+        if (plugin.configConfig.getBoolean("clearinv")) {
             player.getInventory().clear();
         }
 
-        if (plugin.configConfig.getBoolean("join.enable")) {
+        if (plugin.configConfig.getBoolean("enable")) {
 
-            ItemStack compass = new ItemStack(Material.getMaterial(plugin.configConfig.getString("join.item")), 1);
+            ItemStack compass = new ItemStack(Material.getMaterial(plugin.configConfig.getString("item")), 1);
             ItemMeta itemMeta = compass.getItemMeta();
 
             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("join.name"))));
-                itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("join.lore"))).split("\n")));
+                itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("name"))));
+                itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("lore"))).split("\n")));
             } else {
                 // EXECUTE WITHOUT PLACEHOLDER CODE
-                itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("join.name")));
-                itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("join.lore")).split("\n")));
+                itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("name")));
+                itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("lore")).split("\n")));
             }
 
             compass.setItemMeta(itemMeta);
-            inv.setItem(plugin.configConfig.getInt("join.slot"), compass);
+            inv.setItem(plugin.configConfig.getInt("slot"), compass);
         }
     }
 }
