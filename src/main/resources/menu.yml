@@ -5,22 +5,25 @@
 
 menu:
   name: "&8&l* &cServer Selector &8&l*"
-  slots: 36
+  slots: 45
   items:
-    GRASS_BLOCK:
+    1:
+      material: GRASS_BLOCK
       slot: 12
       name: "&8* &aSurvival &8*"
       lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25565%/%pinger_max_127.0.0.1:25565%\n&f\n&8* %pinger_online_127.0.0.1:25565% &8*"
-      server: survival
+      server: server2
 
-    STONE:
+    2:
+      material: STONE
       slot: 14
       name: "&8* &bCreative &8*"
       lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25566%/%pinger_max_127.0.0.1:25566%\n&f\n&8* %pinger_online_127.0.0.1:25566% &8*"
       server: creative
 
-    DIAMOND_BLOCK:
+    3:
+      material: DIAMOND_BLOCK
       slot: 22
       name: "&8* &cMinigames &8*"
-      lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25567%/%pinger_max_127.0.0.1:25567%\n&f\n&8* %pinger_online_127.0.0.1:25567% &8*"
+      lore: "\n&fIncluded games:\n&8> &7Survival Games\n\n&7Players: &f%pinger_players_127.0.0.1:25567%/%pinger_max_127.0.0.1:25567%\n&f\n&8* %pinger_online_127.0.0.1:25567% &8*"
       server: minigames

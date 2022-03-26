@@ -37,13 +37,17 @@ public class InventoryClick implements Listener {
                 if (event.getSlot() == plugin.menuConfig.getInt("menu.items." + string + ".slot")) {
                     ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
                     DataOutputStream output = new DataOutputStream(byteOutput);
-                    try {
-                        output.writeUTF("Connect");
-                        output.writeUTF(plugin.menuConfig.getString("menu.items." + string + ".server"));
-                        player.sendPluginMessage(plugin, "BungeeCord", byteOutput.toByteArray());
-                        output.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (plugin.menuConfig.getString("menu.items." + string + ".server") == "none") {
+                        // IGNORE
+                    } else {
+                        try {
+                            output.writeUTF("Connect");
+                            output.writeUTF(plugin.menuConfig.getString("menu.items." + string + ".server"));
+                            player.sendPluginMessage(plugin, "BungeeCord", byteOutput.toByteArray());
+                            output.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
