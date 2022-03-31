@@ -35,19 +35,19 @@ public class InventoryClick implements Listener {
 
             for (String string : plugin.menuConfig.getConfigurationSection("menu.items").getKeys(false)) {
                 if (event.getSlot() == plugin.menuConfig.getInt("menu.items." + string + ".slot")) {
+
+                    plugin.defaultAnimation(player);
+
                     ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
                     DataOutputStream output = new DataOutputStream(byteOutput);
-                    if (plugin.menuConfig.getString("menu.items." + string + ".server") == "none") {
-                        // IGNORE
-                    } else {
-                        try {
-                            output.writeUTF("Connect");
-                            output.writeUTF(plugin.menuConfig.getString("menu.items." + string + ".server"));
-                            player.sendPluginMessage(plugin, "BungeeCord", byteOutput.toByteArray());
-                            output.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    if (plugin.menuConfig.getString("menu.items." + string + ".server") != null)
+                    try {
+                        output.writeUTF("Connect");
+                        output.writeUTF(plugin.menuConfig.getString("menu.items." + string + ".server"));
+                        player.sendPluginMessage(plugin, "BungeeCord", byteOutput.toByteArray());
+                        output.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             }

@@ -37,10 +37,12 @@ public class Join implements Listener {
 
             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                 itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("name"))));
+                if (plugin.configConfig.getString("lore") != null)
                 itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("lore"))).split("\n")));
             } else {
                 // EXECUTE WITHOUT PLACEHOLDER CODE
                 itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("name")));
+                if (plugin.configConfig.getString("lore") != null)
                 itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.configConfig.getString("lore")).split("\n")));
             }
 

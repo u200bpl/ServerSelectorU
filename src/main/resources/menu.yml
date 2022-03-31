@@ -12,7 +12,7 @@ menu:
       slot: 12
       name: "&8* &aSurvival &8*"
       lore: "\n&7Version: &f1.18\n&7Players: &f%pinger_players_127.0.0.1:25565%/%pinger_max_127.0.0.1:25565%\n&f\n&8* %pinger_online_127.0.0.1:25565% &8*"
-      server: server2
+      server: survival
 
     2:
       material: STONE
@@ -23,7 +23,48 @@ menu:
 
     3:
       material: DIAMOND_BLOCK
-      slot: 22
+      slot: 31
       name: "&8* &cMinigames &8*"
-      lore: "\n&fIncluded games:\n&8> &7Survival Games\n\n&7Players: &f%pinger_players_127.0.0.1:25567%/%pinger_max_127.0.0.1:25567%\n&f\n&8* %pinger_online_127.0.0.1:25567% &8*"
+      lore: "\n&fIncluded games:\n&8> &7Survival Games\n&8> &7SkyWars\n\n&7Players: &f%pinger_players_127.0.0.1:25567%/%pinger_max_127.0.0.1:25567%\n&f\n&8* %pinger_online_127.0.0.1:25567% &8*"
       server: minigames
+
+    4:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 20
+      name: "&8"
+    5:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 21
+      name: "&8"
+    6:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 22
+      name: "&8"
+    7:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 23
+      name: "&8"
+    8:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 24
+      name: "&8"
+    9:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 11
+      name: "&8"
+    10:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 13
+      name: "&8"
+    11:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 15
+      name: "&8"
+    12:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 30
+      name: "&8"
+    13:
+      material: BLACK_STAINED_GLASS_PANE
+      slot: 32
+      name: "&8"

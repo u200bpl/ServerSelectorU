@@ -24,25 +24,18 @@ public class ServerSelectorInv implements InventoryHolder {
         this.player = player;
         this.inventory = Bukkit.createInventory(this, plugin.menuConfig.getInt("menu.slots"), ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.name")));
 
-        for (String string : plugin.menuConfig.getConfigurationSection("menu.items").getKeys(false)) {
+        for (String string : plugin.menuConfig.getConfigurationSection("menu.items.").getKeys(false)) {
             ItemStack item = new ItemStack(Material.getMaterial(plugin.menuConfig.getString("menu.items." + string + ".material")), 1);
             ItemMeta itemMeta = item.getItemMeta();
 
             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                 itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name"))));
-                if (plugin.menuConfig.getString("menu.items." + string + ".lore") == "none") {
-                    // IGNORE
-                } else {
-                    itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore"))).split("\n")));
-                }
+                if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
+                itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore"))).split("\n")));
             } else {
-                // EXECUTE WITHOUT PLACEHOLDER CODE
                 itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name")));
-                if (plugin.menuConfig.getString("menu.items." + string + ".lore") == "none") {
-                    // IGNORE
-                } else {
-                    itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore")).split("\n")));
-                }
+                if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
+                itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore")).split("\n")));
             }
 
             item.setItemMeta(itemMeta);
