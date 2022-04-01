@@ -25,21 +25,40 @@ public class ServerSelectorInv implements InventoryHolder {
         this.inventory = Bukkit.createInventory(this, plugin.menuConfig.getInt("menu.slots"), ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.name")));
 
         for (String string : plugin.menuConfig.getConfigurationSection("menu.items.").getKeys(false)) {
-            ItemStack item = new ItemStack(Material.getMaterial(plugin.menuConfig.getString("menu.items." + string + ".material")), 1);
-            ItemMeta itemMeta = item.getItemMeta();
 
-            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name"))));
-                if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
-                itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore"))).split("\n")));
+            if (plugin.menuConfig.getString("menu.items." + string + ".value") != null) {
+                ItemStack item = new ItemStack(Material.getMaterial(plugin.menuConfig.getString("menu.items." + string + ".material")), 1, (byte) plugin.menuConfig.getInt("menu.items." + string + ".value"));
+                ItemMeta itemMeta = item.getItemMeta();
+
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                    itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name"))));
+                    if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
+                    itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore"))).split("\n")));
+                } else {
+                    itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name")));
+                    if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
+                    itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore")).split("\n")));
+                }
+
+                item.setItemMeta(itemMeta);
+                inventory.setItem(plugin.menuConfig.getInt("menu.items." + string + ".slot"), item);
             } else {
-                itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name")));
-                if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
-                itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore")).split("\n")));
-            }
+                ItemStack item = new ItemStack(Material.getMaterial(plugin.menuConfig.getString("menu.items." + string + ".material")), 1);
+                ItemMeta itemMeta = item.getItemMeta();
 
-            item.setItemMeta(itemMeta);
-            inventory.setItem(plugin.menuConfig.getInt("menu.items." + string + ".slot"), item);
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                    itemMeta.setDisplayName(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name"))));
+                    if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
+                    itemMeta.setLore(Arrays.asList(PlaceholderAPI.setPlaceholders(player, ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore"))).split("\n")));
+                } else {
+                    itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".name")));
+                    if (plugin.menuConfig.getString("menu.items." + string + ".lore") != null)
+                    itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', plugin.menuConfig.getString("menu.items." + string + ".lore")).split("\n")));
+                }
+
+                item.setItemMeta(itemMeta);
+                inventory.setItem(plugin.menuConfig.getInt("menu.items." + string + ".slot"), item);
+            }
         }
         player.openInventory(inventory);
     }
