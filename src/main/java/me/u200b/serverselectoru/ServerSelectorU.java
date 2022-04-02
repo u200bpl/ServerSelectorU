@@ -1,12 +1,10 @@
 package me.u200b.serverselectoru;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import me.u200b.serverselectoru.commands.Reload;
 import me.u200b.serverselectoru.events.InventoryClick;
 import me.u200b.serverselectoru.events.Join;
 import me.u200b.serverselectoru.events.OpenMenu;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -29,6 +27,8 @@ public final class ServerSelectorU extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        new Metrics(this, 14820);
+
         // EVENTS
         getServer().getPluginManager().registerEvents( new Join(this), this);
         getServer().getPluginManager().registerEvents( new OpenMenu(this), this);

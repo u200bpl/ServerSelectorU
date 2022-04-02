@@ -79,7 +79,7 @@ menu:
       slot: 32
       name: "&8"
 
-# 1.16+ config
+# 1.12+ config
 # Use this example if you are running a 1.9+ server
 #
 #    13:
