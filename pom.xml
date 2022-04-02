@@ -6,7 +6,7 @@
 
     <groupId>me.u200b</groupId>
     <artifactId>ServerSelectorU</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>ServerSelectorU</name>
